@@ -276,6 +276,18 @@ When spawning headless workers for batch processing, use the appropriate command
 | OpenCode | `opencode run "prompt"` |
 | Qwen | `qwen -p "prompt"` |
 
+## Codex Operating Notes
+
+Codex is a first-class Career-Ops client. It should read this `AGENTS.md`
+file as the canonical project instruction source, then open only the mode
+files needed for the user's request.
+
+- Interactive use: run `codex` in the repository root and prompt naturally.
+- Headless use: run `codex exec "prompt"` for batch workers.
+- Do not create a parallel Codex command layer; route to `modes/*.md` and the existing Node scripts.
+- Preserve the data contract: user-specific data belongs only in `cv.md`, `config/profile.yml`, `modes/_profile.md`, `article-digest.md`, `portals.yml`, `data/`, `reports/`, `output/`, and `interview-prep/`.
+- Use Playwright for live job verification when available.
+
 ## Stack and Conventions
 
 - Node.js (mjs modules), Playwright (PDF + scraping), YAML (config), HTML/CSS (template), Markdown (data), Canva MCP (optional visual CV)

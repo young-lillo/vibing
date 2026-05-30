@@ -1,7 +1,7 @@
 {
   "name": "career-ops",
   "version": "1.8.1",
-  "description": "AI-powered job search pipeline built on Claude Code",
+  "description": "AI-powered job search pipeline for Codex and AI coding CLIs",
   "scripts": {
     "doctor": "node doctor.mjs",
     "verify": "node verify-pipeline.mjs",
@@ -21,7 +21,9 @@
   "keywords": [
     "ai",
     "job-search",
+    "codex",
     "claude-code",
+    "agents-md",
     "career",
     "career-ops",
     "careerops",

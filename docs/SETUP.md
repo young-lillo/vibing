@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- [Claude Code](https://claude.ai/code) installed and configured
+- Codex, Claude Code, Gemini CLI, OpenCode, or another AI coding CLI that reads project instructions
 - Node.js 18+ (for PDF generation and utility scripts)
 - (Optional) Go 1.21+ (for the dashboard TUI)
 
@@ -44,11 +44,13 @@ Edit `portals.yml`:
 
 ### 5. Start using
 
-Open Claude Code in this directory:
+Open your AI coding CLI in this directory. Codex users can start here:
 
 ```bash
-claude
+codex
 ```
+
+Claude Code, Gemini CLI, and OpenCode users can start their normal CLI instead.
 
 Then paste a job offer URL or description. Career-ops will automatically evaluate it, generate a report, create a tailored PDF, and track it.
 
@@ -63,6 +65,14 @@ Then paste a job offer URL or description. Career-ops will automatically evaluat
 | Batch evaluate | `/career-ops batch` |
 | Check tracker status | `/career-ops tracker` |
 | Fill application form | `/career-ops apply` |
+
+Codex does not need a separate slash-command layer. Use natural-language prompts such as:
+
+```text
+Run Career-Ops scan.
+Evaluate this job URL with the full Career-Ops pipeline.
+Generate the tailored PDF for this role.
+```
 
 ## Verify Setup
 

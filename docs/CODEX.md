@@ -1,15 +1,20 @@
 # Codex Setup
 
-Career-Ops supports Codex through the root `AGENTS.md` file.
+Career-Ops is Codex-ready through the root `AGENTS.md` file. Codex should use
+that file as the canonical instruction source, then route into the same
+checked-in `modes/*.md`, templates, tracker flow, and scripts used by other
+AI coding CLIs.
 
-If your Codex client reads project instructions automatically, `AGENTS.md`
-is enough for routing and behavior. Codex should reuse the same checked-in
-mode files, templates, tracker flow, and scripts that already power the
-Claude workflow.
+Do not build a separate Codex automation layer. The durable contract is:
+
+1. `AGENTS.md` defines behavior and data safety.
+2. `modes/*.md` define task-specific workflows.
+3. Node scripts perform deterministic work.
+4. User personalization stays in user-layer files.
 
 ## Prerequisites
 
-- A Codex client that can work with project `AGENTS.md`
+- Codex CLI or a Codex client that reads project `AGENTS.md`
 - Node.js 18+
 - Playwright Chromium installed for PDF generation and reliable job verification
 - Go 1.21+ if you want the TUI dashboard
@@ -21,11 +26,25 @@ npm install
 npx playwright install chromium
 ```
 
+## Start Codex
+
+```bash
+cd career-ops
+codex
+```
+
+For non-interactive execution, use the headless command listed in `AGENTS.md`:
+
+```bash
+codex exec "Run Career-Ops scan and summarize new pipeline entries."
+```
+
 ## Recommended Starting Prompts
 
 - `Evaluate this job URL with Career-Ops and run the full pipeline.`
 - `Scan my configured portals for new roles that match my profile.`
 - `Generate the tailored ATS PDF for this role using Career-Ops.`
+- `Show my tracker status and recommend next actions.`
 
 ## Routing Map
 
@@ -46,6 +65,15 @@ npx playwright install chromium
 The key point: Codex support is additive. It should route into the existing
 Career-Ops modes and scripts rather than introducing a parallel automation
 layer.
+
+## Codex Operating Notes
+
+- Use natural-language prompts; there is no required Codex slash-command layer.
+- Read `AGENTS.md` first, then the relevant mode file.
+- Prefer deterministic scripts for scanner, PDF, tracker merge, normalization, and verification.
+- Use Playwright for live job-post verification when available.
+- Keep generated reports in `reports/`, PDFs in `output/`, and tracker additions in `batch/tracker-additions/`.
+- Respect `.gitignore`; never commit CVs, profiles, reports, generated PDFs, or interview prep.
 
 ## Behavioral Rules
 

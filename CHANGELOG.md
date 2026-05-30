@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+* make Codex a first-class documented client through `AGENTS.md`, README, setup, and Codex-specific notes
+* add missing upstream `README.ua.md` and `TRADEMARK.md` files referenced by README
+
 ## [1.6.0](https://github.com/santifer/career-ops/compare/v1.5.0...v1.6.0) (2026-04-26)
 
 
